@@ -26,7 +26,7 @@ function schedule(param) {
   }
   return obj;
 }
-console.log(species.find((animal) => animal.name === 'lions').availability);
+
 function getSchedule(scheduleTarget) {
   const days = Object.keys(hours).find((day) => day === scheduleTarget);
   const animals = species.find((animal) => animal.name === scheduleTarget);

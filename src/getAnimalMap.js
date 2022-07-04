@@ -15,38 +15,24 @@ function createObj() {
 }
 
 function getAnimalName(sort) {
-  if (sort === undefined || sort === false) {
-    return species.reduce((acc, animal) => {
-      acc[animal.location] = acc[animal.location] || [];
-      const obj = createObj();
-      obj[animal.name] = animal.residents.map((element) => element.name);
-      acc[animal.location].push(obj);
-      return acc;
-    }, {});
-  } return species.reduce((acc, animal) => {
+  return species.reduce((acc, animal) => {
     acc[animal.location] = acc[animal.location] || [];
     const obj = createObj();
-    obj[animal.name] = animal.residents.map((element) => element.name).sort();
+    obj[animal.name] = (sort === undefined || sort === false)
+      ? animal.residents.map((element) => element.name)
+      : animal.residents.map((element) => element.name).sort();
     acc[animal.location].push(obj);
     return acc;
   }, {});
 }
 
 function getAnimalSex(sex, sort) {
-  if (sort === undefined || sort === false) {
-    return species.reduce((acc, animal) => {
-      acc[animal.location] = acc[animal.location] || [];
-      const obj = createObj();
-      obj[animal.name] = animal.residents
-        .filter((element) => (element.sex === sex)).map((item) => item.name);
-      acc[animal.location].push(obj);
-      return acc;
-    }, {});
-  } return species.reduce((acc, animal) => {
+  return species.reduce((acc, animal) => {
     acc[animal.location] = acc[animal.location] || [];
     const obj = createObj();
-    obj[animal.name] = animal.residents
-      .filter((element) => (element.sex === sex)).map((item) => item.name).sort();
+    obj[animal.name] = (sort === undefined || sort === false)
+      ? animal.residents.filter((element) => (element.sex === sex)).map((item) => item.name)
+      : animal.residents.filter((element) => (element.sex === sex)).map((item) => item.name).sort();
     acc[animal.location].push(obj);
     return acc;
   }, {});
